@@ -396,7 +396,7 @@ class GameTS {
     }
 }
 
-const cellColors = ['#EEE4DA', '#ede0c8', '#f2b179', '#f59563', '#f67c5f', '#f65e3b'],
+const cellColors = ['#EEE4DA', '#ede0c8', '#f2b179', '#f59563', '#f67c5f', '#f65e3b']
 const themeColor ="rgba(238, 228, 218, 0.35)"
 
 new GameTS(cellColors, themeColor);
