@@ -402,6 +402,6 @@ var Game = (function (options) {
     prototype.countScore = countScore;
     return constructor;
 })()
-
-new Game();
+var options = {};
+new Game(options);
 
