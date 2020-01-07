@@ -1,7 +1,10 @@
 
 var Game = (function (options) {
-    var constructor = function () {
+    var constructor = function (options) {
         this.tdim = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+        options = options||{}
+        this.cellColors = options['cellColors']
+        this.themeColor = options['themeColor']
         this.init();
     }
 
@@ -83,7 +86,7 @@ var Game = (function (options) {
                 }
             }
 
-            for (j = 3; j >= 1; j--) {
+            for (var j = 3; j >= 1; j--) {
                 if (tdim[i][j] == tdim[i][j - 1] && tdim[i][j] > 0 && tdim[i][j - 1] > 0) {
                     tdim[i][j] = tdim[i][j] + tdim[i][j - 1];
                     tdim[i][j - 1] = 0;
@@ -120,7 +123,7 @@ var Game = (function (options) {
                 }
             }
 
-            for (j = 0; j < 3; j++) {
+            for (var j = 0; j < 3; j++) {
                 if (tdim[i][j] == tdim[i][j + 1] && tdim[i][j] > 0 && tdim[i][j + 1] > 0) {
                     tdim[i][j] = tdim[i][j] + tdim[i][j + 1];
                     tdim[i][j + 1] = 0;
@@ -157,7 +160,7 @@ var Game = (function (options) {
                 }
             }
 
-            for (i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++) {
                 if (tdim[i][j] == tdim[i + 1][j] && tdim[i][j] > 0 && tdim[i + 1][j] > 0) {
                     tdim[i][j] = tdim[i][j] + tdim[i + 1][j];
                     tdim[i + 1][j] = 0;
@@ -193,7 +196,7 @@ var Game = (function (options) {
                     }
                 }
             }
-            for (i = 3; i >= 1; i--) {
+            for (var i = 3; i >= 1; i--) {
                 if (tdim[i][j] == tdim[i - 1][j]) {
                     tdim[i][j] = tdim[i][j] + tdim[i - 1][j];
                     tdim[i - 1][j] = 0;
@@ -222,7 +225,7 @@ var Game = (function (options) {
         var cnt = 0;
         //获取所有值为0的位置用i,j表示
         for (var i = 0; i < 4; i++) {
-            for (j = 3; j >= 0; j--) {
+            for (var j = 3; j >= 0; j--) {
                 if (tdim[i][j] == 0) {
                     newAry.push({i: i, j: j});
                 }
@@ -246,7 +249,7 @@ var Game = (function (options) {
         if (newAry.length <= 0) {
 
             for (var m = 0; m < 4; m++) {
-                for (n = 3; n >= 0; n--) {
+                for (var n = 3; n >= 0; n--) {
                     var compare = [];
                     var count = 0;
                     var cur = tdim[m][n];
@@ -313,6 +316,8 @@ var Game = (function (options) {
      */
     var rendering = function () {
         var tdim = this.tdim;
+        var cellColors = this.cellColors;
+        var themeColor = this.themeColor;
         var row = document.getElementsByClassName("grid-row");
         var cell = document.getElementsByClassName("grid-cell");
         for (var m = 0; m < 4; m++) {
@@ -322,29 +327,29 @@ var Game = (function (options) {
                     var num = tdim[m][n];
                     switch (num) {
                         case 2:
-                            cell[seqnum].style.background = '#EEE4DA';
+                            cell[seqnum].style.background =cellColors[0];
                             break;
                         case 4:
-                            cell[seqnum].style.background = '#ede0c8';
+                            cell[seqnum].style.background = cellColors[1];
                             break;
                         case 8:
-                            cell[seqnum].style.background = '#f2b179';
+                            cell[seqnum].style.background = cellColors[2];
                             break;
                         case 16:
-                            cell[seqnum].style.background = '#f59563';
+                            cell[seqnum].style.background = cellColors[3];
                             break;
                         case 32:
-                            cell[seqnum].style.background = '#f67c5f';
+                            cell[seqnum].style.background = cellColors[4];
                             break;
                         default:
-                            cell[seqnum].style.background = '#f65e3b';
+                            cell[seqnum].style.background = cellColors[5];
                             break;
                     }
                     cell[seqnum].innerHTML = tdim[m][n];
                 }
                 else {
                     cell[seqnum].innerHTML = '';
-                    cell[seqnum].style.background = 'rgba(238, 228, 218, 0.35)';
+                    cell[seqnum].style.background = themeColor;
                 }
             }
         }
@@ -402,6 +407,9 @@ var Game = (function (options) {
     prototype.countScore = countScore;
     return constructor;
 })()
-var options = {};
+var options = {
+    cellColors: ['#EEE4DA', '#ede0c8', '#f2b179', '#f59563', '#f67c5f', '#f65e3b'],
+    themeColor:"rgba(238, 228, 218, 0.35)"
+};
 new Game(options);
 
