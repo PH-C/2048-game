@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2048</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .game {
+        position: relative;
+        width: 410px;
+        height: 520px;
+        border: 0px solid brown;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+    .score {
+        display: inline-block;
+        width: 175px;
+        height: 60px;
+        line-height: 60px;
+        margin: 10px;
+        color: white;
+        background-color: #80c640;
+        text-align: center;
+        border: 1px solid brown;
+        border-radius: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        width: 175px;
+        height: 60px;
+        line-height: 60px;
+        margin: 10px;
+        color: #979797;
+        background-color: yellow;
+        text-align: center;
+        border: 1px solid brown;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .container {
+        width: 408px;
+        height: 416px;
+        line-height: 416px;
+        padding: 2px;
+        background-color: #BBADA0;
+        border: 1px solid #BBADA0;
+        border-radius: 5px;
+    }
+
+    .grid-row {
+        display: block;
+        width: 402px;
+        height: 100px;
+        line-height: 96px;
+        margin: 4px 4px;
+        /*border: 1px solid brown;*/
+    }
+
+    .grid-cell {
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        vertical-align: top;
+        margin: 3px;
+        text-align: center;
+        color: #000000;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: rgba(238, 228, 218, 0.35);
+        border: 0px solid rgba(238, 228, 218, 0.35);
+        border-radius: 2px;
+    }
+
+    .gameover {
+
+        width: 416px;
+        height: 424px;
+        line-height: 416px;
+        text-align: center;
+        background-color: rgba(238, 228, 218, 0.5);
+        margin: 0 auto;
+        position: absolute;
+        z-index: 3;
+        top: 80px;
+        left: 0;
+        right: 0;
+        display: none;
+
+    }
+
+    .game p {
+        display: inline-block;
+        margin: 0 auto;
+    }
+
+    .game p a {
+        color: #776e65;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+<div class="game">
+    <div class="score">score:<span id="score">0</span></div>
+    <div class="btn">New Game</div>
+    <div class="container">
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+
+        </div>
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+    </div>
+    <div class="gameover">
+        <p>Game over!</p>
+        <p><a id="again">Try again</a></p>
+    </div>
+</div>
+<script src="js/index.js"></script>
+<script>
+
+</script>
+</body>
+</html>
